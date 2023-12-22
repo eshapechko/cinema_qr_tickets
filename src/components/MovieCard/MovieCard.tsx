@@ -1,13 +1,9 @@
 import {Link} from 'react-router-dom';
 import style from './MovieCard.module.scss';
+import {IMovieCard} from '../../types/movie';
 
 interface MovieCardProps {
-  data: {
-    id: string;
-    img: string;
-    title: string;
-    genre: string;
-  };
+  data: IMovieCard;
 }
 
 export const MovieCard = ({data}: MovieCardProps) => {

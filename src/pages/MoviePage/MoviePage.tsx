@@ -4,7 +4,7 @@ import style from './MoviePage.module.scss';
 import cn from 'classnames';
 
 const data: Movie = {
-  id: '1',
+  id: 1,
   img: 'https://webgate.24guru.by/uploads/events/thumbs/240x340/82ZN4s1xP.jpg',
   title: 'Вонок',
   genre: 'Комедия',

@@ -2,7 +2,7 @@ import {Actors} from './actors';
 import {Country} from './countries';
 
 export interface IMovieCard {
-  id: string;
+  id: number;
   img: string;
   title: string;
   genre: string;
