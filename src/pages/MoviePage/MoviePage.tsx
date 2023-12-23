@@ -1,24 +1,16 @@
+import {useParams} from 'react-router-dom';
 import {Header} from '../../components/Header/Header';
-import {Movie} from '../../types/movie';
 import style from './MoviePage.module.scss';
 import cn from 'classnames';
-
-const data: Movie = {
-  id: 1,
-  img: 'https://webgate.24guru.by/uploads/events/thumbs/240x340/82ZN4s1xP.jpg',
-  title: 'Вонок',
-  genre: 'Комедия',
-  description:
-    'hsdfhjksfhdfhk рвалрлоыарлоырал ывралоырвалоыр ываолывра ыоарлоывра ывиолвра шгкушгпбсладляоа ыоатлоытясьбт lorem20hjkhdjfkshdjkfhdsfhjksh hfkjsgdkjfkjsa sadfsdfjksdhfjkdsh jashfjksdfkjsdh safnjkshfkjhdsf',
-  times: ['10.30', '15.00', '18.00', '21.00'],
-  duration: 145,
-  country: 'США',
-  actors: ['Арнольд Шварцнегер', 'Киану Ривз'],
-  year: 2023,
-  premier: '7 сентября 2023',
-};
+import {useAppSelector} from '../../hooks.ts/hookSelector';
+import {Title} from '../../components/Title/Title';
 
 export const MoviePage = () => {
+  const moviesData = useAppSelector((state) => state.movies.data);
+  const {id} = useParams();
+  const data = moviesData.find((movie) => movie.id === +id!);
+  console.log('data: ', data); //!Убрать!!
+
   const renderSessionTimes = (times: string[]) => {
     return times.map((time) => {
       return (
@@ -29,9 +21,13 @@ export const MoviePage = () => {
     });
   };
 
+  if (!data) {
+    return <Title center>Такого фильма нет в хранилище данных</Title>;
+  }
+
   return (
     <div className={style.MoviePage}>
-      <Header title='Название фильма' />
+      <Header title={data.title} />
       <div className={style.content}>
         <div>
           <div className={style.imgBlock}>
