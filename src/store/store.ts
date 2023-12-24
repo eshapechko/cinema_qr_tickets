@@ -1,14 +1,14 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {moviesReducer} from './movieSlice/movieSlice';
-import {pokemonApi} from '../api/rtkApi';
+import {rtkApi} from '../api/rtkApi';
 
 export const store = configureStore({
   reducer: {
     movies: moviesReducer,
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
+    [rtkApi.reducerPath]: rtkApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(pokemonApi.middleware),
+    getDefaultMiddleware().concat(rtkApi.middleware),
 });
 
 export type AppStore = typeof store;

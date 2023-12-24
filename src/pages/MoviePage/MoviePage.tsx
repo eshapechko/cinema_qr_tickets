@@ -2,14 +2,12 @@ import {useParams} from 'react-router-dom';
 import {Header} from '../../components/Header/Header';
 import style from './MoviePage.module.scss';
 import cn from 'classnames';
-import {useAppSelector} from '../../hooks.ts/hookSelector';
 import {Title} from '../../components/Title/Title';
+import {useGetMovieByIdQuery} from '../../api/movieEndpoints';
 
 export const MoviePage = () => {
-  const moviesData = useAppSelector((state) => state.movies.data);
   const {id} = useParams();
-  const data = moviesData.find((movie) => movie.id === +id!);
-  console.log('data: ', data); //!Убрать!!
+  const {isLoading, data} = useGetMovieByIdQuery(id!);
 
   const renderSessionTimes = (times: string[]) => {
     return times.map((time) => {
@@ -22,8 +20,9 @@ export const MoviePage = () => {
   };
 
   if (!data) {
-    return <Title center>Такого фильма нет в хранилище данных</Title>;
+    return <Title center>Фильм не найден</Title>;
   }
+  if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <div className={style.MoviePage}>

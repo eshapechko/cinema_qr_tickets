@@ -1,5 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit';
-import type {PayloadAction} from '@reduxjs/toolkit';
 import {Movie} from '../../types/movie';
 
 export interface MoviesState {
@@ -56,14 +55,7 @@ const initialState: MoviesState = {
 export const moviesSlice = createSlice({
   name: 'moviesSlice',
   initialState,
-  reducers: {
-    // getMovieById: (state, action: PayloadAction<number>) => {
-    //   const id = action.payload;
-    // },
-    // incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.value += action.payload;
-    // },
-  },
+  reducers: {},
 });
 
 // export const {setMovieTitle} = moviesSlice.actions;
