@@ -58,6 +58,4 @@ export const moviesSlice = createSlice({
   reducers: {},
 });
 
-// export const {setMovieTitle} = moviesSlice.actions;
-
 export const moviesReducer = moviesSlice.reducer;

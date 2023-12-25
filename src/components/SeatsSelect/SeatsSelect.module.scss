@@ -1,0 +1,84 @@
+.SeatsSelect {
+  --gap: var(--seat-gap);
+  --size: var(--seat-size);
+  display: grid;
+  margin-top: 20px;
+  gap: calc(var(--gap) * 2);
+  justify-content: center;
+}
+
+.display {
+  position: relative;
+  padding-top: 30px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+
+  i {
+    --display-size: 400px;
+    font-size: var(--display-size);
+    position: absolute;
+    top: calc(var(--display-size) / -2.3);
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    color: var(--accent);
+    filter: drop-shadow(0px 4px 13px rgba(0, 199, 187, 0.82));
+  }
+}
+
+.place {
+  display: grid;
+  gap: calc(var(--gap) / 2);
+  grid-template-columns: 30px 1fr;
+  padding-right: calc(var(--size) + var(--gap) / 2);
+}
+
+.rows,
+.seats {
+  display: grid;
+  gap: var(--gap);
+  grid-auto-rows: var(--size);
+}
+
+.row {
+  display: grid;
+  align-items: end;
+  justify-content: center;
+}
+
+.seats {
+  font-size: var(--size);
+  grid-template-columns: repeat(9, var(--size));
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  justify-items: center;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gap) / 2);
+  font-weight: 600;
+
+  i {
+    font-size: 12px;
+  }
+}
+
+.available {
+  color: var(--statusAvailable);
+}
+
+.busy {
+  color: var(--statusBusy);
+}
+
+.selected {
+  color: var(--statusSelected);
+}

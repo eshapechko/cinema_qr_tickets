@@ -4,7 +4,15 @@
   --linkColor: #17b6eb;
   --default: #333;
   --light: #fff;
+  --accent: #00c7bb;
+  --statusAvailable: var(--accent);
+  --statusBusy: red;
+  --statusSelected: #6b0799;
 
   /* Sizes */
   --margin: 16px;
+
+  /* Seats Map */
+  --seat-gap: 12px;
+  --seat-size: 28px;
 }

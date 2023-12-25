@@ -4,9 +4,11 @@ import style from './MoviePage.module.scss';
 import cn from 'classnames';
 import {Title} from '../../components/Title/Title';
 import {useGetMovieByIdQuery} from '../../api/movieEndpoints';
+import {SeatsSelect} from '../../components/SeatsSelect/SeatsSelect';
 
 export const MoviePage = () => {
-  const {id} = useParams();
+  const {id} = useParams<string>();
+
   const {isLoading, data} = useGetMovieByIdQuery(id!);
 
   const renderSessionTimes = (times: string[]) => {
@@ -52,6 +54,7 @@ export const MoviePage = () => {
             <div className={style.sessionTimeList}>
               {renderSessionTimes(data.times)}
             </div>
+            <SeatsSelect />
           </div>
         </div>
       </div>
