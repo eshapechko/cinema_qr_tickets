@@ -4,8 +4,8 @@ import style from './SeatsSelect.module.scss';
 import cn from 'classnames';
 
 export const SeatsSelect = () => {
-  let seatId = 1;
-  let resetIdx = 0;
+  let seat = 1;
+  let row = 1;
   let resetNums = [4, 6, 5];
   const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
 
@@ -32,7 +32,7 @@ export const SeatsSelect = () => {
             .fill(0)
             .map((_, i) => {
               if (emptyCell.includes(i)) {
-                return <div />;
+                return <div key={getId()} />;
               } else {
                 const classes = cn('ic-seat', {
                   [style.available]: i !== 3 && i !== 5,
@@ -41,18 +41,19 @@ export const SeatsSelect = () => {
                 });
 
                 const data = {
-                  id: seatId,
-                  num: seatId,
-                  status: seatId !== 3 ? 'available' : 'busy',
+                  row: row,
+                  seat: seat,
+                  status: seat !== 3 ? 'available' : 'busy',
                 };
 
-                if (seatId === resetNums[resetIdx] || seatId === 9) {
-                  seatId = 1;
-                  resetIdx++;
+                if (seat === resetNums[row - 1] || seat === 9) {
+                  seat = 1;
+                  row++;
+                  data.row = row - 1;
                 } else {
-                  seatId++;
+                  seat++;
                 }
-                return <Seat key={getId()} className={classes} data={data} />;
+                return <Seat className={classes} key={i} data={data} />;
               }
             })}
         </div>

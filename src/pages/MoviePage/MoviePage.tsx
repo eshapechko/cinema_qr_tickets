@@ -1,10 +1,11 @@
 import {useParams} from 'react-router-dom';
 import {Header} from '../../components/Header/Header';
 import style from './MoviePage.module.scss';
-import cn from 'classnames';
 import {Title} from '../../components/Title/Title';
 import {useGetMovieByIdQuery} from '../../api/movieEndpoints';
-import {SeatsSelect} from '../../components/SeatsSelect/SeatsSelect';
+import {SessionTime} from '../../components/SessionTime/SessionTime';
+import {InfoTable} from '../../components/InfoTable/InfoTable';
+import {helper} from './helpers';
 
 export const MoviePage = () => {
   const {id} = useParams<string>();
@@ -12,12 +13,8 @@ export const MoviePage = () => {
   const {isLoading, data} = useGetMovieByIdQuery(id!);
 
   const renderSessionTimes = (times: string[]) => {
-    return times.map((time) => {
-      return (
-        <div key={time} className={cn(style.sessionTimeItem, 'hover')}>
-          {time}
-        </div>
-      );
+    return times.map((time, i) => {
+      return <SessionTime key={time} time={time} id={i} />;
     });
   };
 
@@ -37,24 +34,13 @@ export const MoviePage = () => {
           <div className={style.desc}>{data.description}</div>
         </div>
         <div className={style.rightCol}>
-          <div className={style.info}>
-            <div className={style.infoLabel}>Премьера</div>
-            <div className={style.infoValue}>{data.premier}</div>
-            <div className={style.infoLabel}>В ролях</div>
-            <div className={style.infoValue}>{data.actors.join(', ')}</div>
-            <div className={style.infoLabel}>Длительность</div>
-            <div className={style.infoValue}>{data.duration}</div>
-            <div className={style.infoLabel}>Страна</div>
-            <div className={style.infoValue}>{data.country}</div>
-            <div className={style.infoLabel}>Год</div>
-            <div className={style.infoValue}>{data.year}</div>
-          </div>
+          <InfoTable data={helper.getInfoData(data)} />
+
           <div className={style.session}>
             <h3 className={style.subtitle}>Сеансы</h3>
             <div className={style.sessionTimeList}>
               {renderSessionTimes(data.times)}
             </div>
-            <SeatsSelect />
           </div>
         </div>
       </div>
