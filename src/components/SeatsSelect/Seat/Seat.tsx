@@ -15,15 +15,15 @@ interface SeatProps {
 
 export const Seat = ({className, data}: SeatProps) => {
   const {id, num, status} = data;
-  const [selectStatus, setSelectStatus] = useState(status);
-  const classes = cn(style.seat, style[selectStatus]);
+  const [seatStatus, setSeatStatus] = useState(status);
+  const classes = cn(style.seat, style[seatStatus]);
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
     if (status !== 'busy') {
-      const isSelected = selectStatus === 'available';
+      const isSelected = seatStatus === 'available';
       const newStatus = isSelected ? 'selected' : 'available';
-      setSelectStatus(newStatus);
+      setSeatStatus(newStatus);
 
       isSelected ? dispatch(addSeat(id)) : dispatch(deleteSeat(id));
     }

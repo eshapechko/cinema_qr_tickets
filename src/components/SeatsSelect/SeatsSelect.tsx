@@ -4,6 +4,11 @@ import style from './SeatsSelect.module.scss';
 import cn from 'classnames';
 
 export const SeatsSelect = () => {
+  let seatId = 1;
+  let resetIdx = 0;
+  let resetNums = [4, 6, 5];
+  const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
+
   return (
     <div className={style.SeatsSelect}>
       <div className={style.display}>
@@ -26,22 +31,29 @@ export const SeatsSelect = () => {
           {Array(63)
             .fill(0)
             .map((_, i) => {
-              const classes = cn('ic-seat', {
-                [style.available]: i !== 3 && i !== 5,
-                [style.busy]: i === 3,
-                [style.selected]: i === 5,
-              });
-              const data = {
-                id: i + 1,
-                num: i + 1,
-                status: i !== 3 ? 'available' : 'busy',
-              };
-              const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
-              return emptyCell.includes(i) ? (
-                <div />
-              ) : (
-                <Seat key={getId()} className={classes} data={data} />
-              );
+              if (emptyCell.includes(i)) {
+                return <div />;
+              } else {
+                const classes = cn('ic-seat', {
+                  [style.available]: i !== 3 && i !== 5,
+                  [style.busy]: i === 3,
+                  [style.selected]: i === 5,
+                });
+
+                const data = {
+                  id: seatId,
+                  num: seatId,
+                  status: seatId !== 3 ? 'available' : 'busy',
+                };
+
+                if (seatId === resetNums[resetIdx] || seatId === 9) {
+                  seatId = 1;
+                  resetIdx++;
+                } else {
+                  seatId++;
+                }
+                return <Seat key={getId()} className={classes} data={data} />;
+              }
             })}
         </div>
       </div>
