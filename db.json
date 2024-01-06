@@ -88,16 +88,23 @@
   "seats": [
     {
       "id": 1,
-      "bought_seats": [
-        {
-          "row": 2,
-          "seat": 2
-        },
-        {
-          "row": 2,
-          "seat": 3
-        }
-      ]
+      "bought_seats": []
+    },
+    {
+      "id": 2,
+      "bought_seats": []
+    },
+    {
+      "id": 3,
+      "bought_seats": []
+    },
+    {
+      "id": 4,
+      "bought_seats": []
+    },
+    {
+      "id": 5,
+      "bought_seats": []
     }
   ]
 }

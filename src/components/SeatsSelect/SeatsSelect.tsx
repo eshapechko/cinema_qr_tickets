@@ -1,32 +1,26 @@
-import {useParams} from 'react-router-dom';
 import {getId} from '../../utils/getId';
 import {Seat} from './Seat/Seat';
 import style from './SeatsSelect.module.scss';
 import cn from 'classnames';
-import {useGetSessionByIdQuery} from '../../api/sessionEndpoints';
-import {Title} from '../Title/Title';
 import {SeatType} from '../../types/seat';
 
-export const SeatsSelect = () => {
-  const {id} = useParams();
-  const {isLoading, data} = useGetSessionByIdQuery(id!);
+type BuySeats = SeatType[] | undefined;
 
+interface SeatsSelectProps {
+  buySeats: BuySeats;
+}
+
+export const SeatsSelect = ({buySeats}: SeatsSelectProps) => {
   let seat = 1;
   let row = 1;
   let resetNums = [4, 6, 5];
   const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
 
-  const isBusySeat = (
-    row: number,
-    seat: number,
-    buySeats: SeatType[] | undefined,
-  ) => {
+  const isBusySeat = (row: number, seat: number, buySeats: BuySeats) => {
     return buySeats?.some(
       (buySeat) => buySeat.row === row && buySeat.seat === seat,
     );
   };
-
-  if (isLoading) return <Title center>Загрузка свободных мест</Title>;
 
   return (
     <div className={style.SeatsSelect}>
@@ -56,7 +50,7 @@ export const SeatsSelect = () => {
                 const seatData = {
                   row: row,
                   seat: seat,
-                  status: isBusySeat(row, seat, data?.seat?.bought_seats)
+                  status: isBusySeat(row, seat, buySeats)
                     ? 'busy'
                     : 'available',
                 };
