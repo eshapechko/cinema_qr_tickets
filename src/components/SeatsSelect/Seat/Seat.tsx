@@ -5,7 +5,6 @@ import {useAppDispatch} from '../../../utils/hooks.ts/hookDispatch';
 import {addSeat, deleteSeat} from '../../../store/orderSlice/orderSlice';
 
 interface SeatProps {
-  className: string;
   data: {
     row: number;
     seat: number;

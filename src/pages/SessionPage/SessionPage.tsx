@@ -3,10 +3,10 @@ import {InfoTable} from '../../components/InfoTable/InfoTable';
 import {SeatsSelect} from '../../components/SeatsSelect/SeatsSelect';
 import {orderState} from '../../store/orderSlice/orderSlice';
 import {useAppSelector} from '../../utils/hooks.ts/hookSelector';
-import style from './TicketPage.module.scss';
+import style from './SessionPage.module.scss';
 import cn from 'classnames';
 
-export const TicketPage = () => {
+export const SessionPage = () => {
   const order = useAppSelector((state) => state.order);
   const price = 20;
   const seatsCount = order.seats.length;
@@ -33,7 +33,7 @@ export const TicketPage = () => {
   };
 
   return (
-    <div className={style.TicketPage}>
+    <div className={style.SessionPage}>
       <Header title='Покупка билетов' />
       <div className={style.content}>
         <SeatsSelect />

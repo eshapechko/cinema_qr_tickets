@@ -1,4 +1,4 @@
-import {Movie} from '../types/movie';
+import {Movie, MovieWithSessions} from '../types/movie';
 import {rtkApi} from './rtkApi';
 
 export const moviesApi = rtkApi.injectEndpoints({
@@ -6,8 +6,8 @@ export const moviesApi = rtkApi.injectEndpoints({
     getAllMovies: builder.query<Movie[], void>({
       query: () => 'movies',
     }),
-    getMovieById: builder.query<Movie, string>({
-      query: (id) => `movies/${id}`,
+    getMovieById: builder.query<MovieWithSessions, string>({
+      query: (id) => `movies/${id}?_embed=sessions`,
     }),
   }),
   overrideExisting: false,

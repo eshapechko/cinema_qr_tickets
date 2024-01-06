@@ -1,13 +1,32 @@
+import {useParams} from 'react-router-dom';
 import {getId} from '../../utils/getId';
 import {Seat} from './Seat/Seat';
 import style from './SeatsSelect.module.scss';
 import cn from 'classnames';
+import {useGetSessionByIdQuery} from '../../api/sessionEndpoints';
+import {Title} from '../Title/Title';
+import {SeatType} from '../../types/seat';
 
 export const SeatsSelect = () => {
+  const {id} = useParams();
+  const {isLoading, data} = useGetSessionByIdQuery(id!);
+
   let seat = 1;
   let row = 1;
   let resetNums = [4, 6, 5];
   const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
+
+  const isBusySeat = (
+    row: number,
+    seat: number,
+    buySeats: SeatType[] | undefined,
+  ) => {
+    return buySeats?.some(
+      (buySeat) => buySeat.row === row && buySeat.seat === seat,
+    );
+  };
+
+  if (isLoading) return <Title center>Загрузка свободных мест</Title>;
 
   return (
     <div className={style.SeatsSelect}>
@@ -34,26 +53,23 @@ export const SeatsSelect = () => {
               if (emptyCell.includes(i)) {
                 return <div key={getId()} />;
               } else {
-                const classes = cn('ic-seat', {
-                  [style.available]: i !== 3 && i !== 5,
-                  [style.busy]: i === 3,
-                  [style.selected]: i === 5,
-                });
-
-                const data = {
+                const seatData = {
                   row: row,
                   seat: seat,
-                  status: seat !== 3 ? 'available' : 'busy',
+                  status: isBusySeat(row, seat, data?.seat?.bought_seats)
+                    ? 'busy'
+                    : 'available',
                 };
 
                 if (seat === resetNums[row - 1] || seat === 9) {
                   seat = 1;
                   row++;
-                  data.row = row - 1;
+                  seatData.row = row - 1;
                 } else {
                   seat++;
                 }
-                return <Seat className={classes} key={i} data={data} />;
+
+                return <Seat key={`${row}-${seat}`} data={seatData} />;
               }
             })}
         </div>

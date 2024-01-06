@@ -53,5 +53,51 @@
       "premier": "12 ноября 2023"
     }
   ],
-  "session": [{"id": 1}]
+  "sessions": [
+    {
+      "id": 1,
+      "time": "10:00",
+      "movieId": 2,
+      "seatId": 1
+    },
+    {
+      "id": 2,
+      "time": "10:00",
+      "movieId": 1,
+      "seatId": 2
+    },
+    {
+      "id": 3,
+      "time": "12:30",
+      "movieId": 1,
+      "seatId": 3
+    },
+    {
+      "id": 4,
+      "time": "18:00",
+      "movieId": 1,
+      "seatId": 4
+    },
+    {
+      "id": 5,
+      "time": "21:00",
+      "movieId": 1,
+      "seatId": 5
+    }
+  ],
+  "seats": [
+    {
+      "id": 1,
+      "bought_seats": [
+        {
+          "row": 2,
+          "seat": 2
+        },
+        {
+          "row": 2,
+          "seat": 3
+        }
+      ]
+    }
+  ]
 }
