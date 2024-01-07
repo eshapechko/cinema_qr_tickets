@@ -83,6 +83,30 @@
       "time": "21:00",
       "movieId": 1,
       "seatId": 5
+    },
+    {
+      "id": 6,
+      "time": "11:00",
+      "movieId": 3,
+      "seatId": 5
+    },
+    {
+      "id": 7,
+      "time": "15:00",
+      "movieId": 3,
+      "seatId": 5
+    },
+    {
+      "id": 8,
+      "time": "12:00",
+      "movieId": 4,
+      "seatId": 5
+    },
+    {
+      "id": 9,
+      "time": "17:00",
+      "movieId": 4,
+      "seatId": 5
     }
   ],
   "seats": [

@@ -25,10 +25,6 @@ export const orderSlice = createSlice({
     clearOrder: (state) => {
       state.seats = [];
     },
-    // buyTicket: (state, action: PayloadAction<number>) => {
-    //   const sessionId = action.payload;
-    //   state.sessionId = sessionId;
-    // },
   },
 });
 

@@ -70,3 +70,15 @@
     font-size: 12px;
   }
 }
+
+.available {
+  color: var(--statusAvailable);
+}
+
+.busy {
+  color: var(--statusBusy);
+}
+
+.selected {
+  color: var(--statusSelected);
+}
