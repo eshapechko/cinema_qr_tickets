@@ -25,6 +25,10 @@
     pointer-events: none;
     color: var(--accent);
     filter: drop-shadow(0px 4px 13px rgba(0, 199, 187, 0.82));
+
+    @media (max-width: 560px) {
+      --display-size: 270px;
+    }
   }
 }
 
@@ -65,6 +69,10 @@
   align-items: center;
   gap: calc(var(--gap) / 2);
   font-weight: 600;
+
+  @media (max-width: 560px) {
+    font-size: 12px;
+  }
 
   i {
     font-size: 12px;

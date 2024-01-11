@@ -5,3 +5,11 @@
 .movieList {
   margin-top: var(--margin);
 }
+
+.title {
+  font-size: 32px;
+
+  @media (max-width: 560px) {
+    font-size: 24px;
+  }
+}

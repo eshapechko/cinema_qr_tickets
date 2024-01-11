@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './InfoTable.module.scss';
-import {getId} from '../../utils/getId';
+import { getId } from '../../utils/getId';
 
 export interface MovieInfoData {
   label: string;
@@ -11,9 +11,9 @@ interface MovieInfoProps {
   data: MovieInfoData[];
 }
 
-export const InfoTable = ({data}: MovieInfoProps) => {
+export const InfoTable = ({ data }: MovieInfoProps) => {
   const renderItems = (data: MovieInfoData[]) => {
-    return data.map(({label, value}) => (
+    return data.map(({ label, value }) => (
       <React.Fragment key={getId()}>
         <div className={style.label}>{label}</div>
         <div>{value}</div>

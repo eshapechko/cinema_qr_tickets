@@ -5,6 +5,10 @@
   align-items: center;
   gap: var(--margin);
   height: 80px;
+
+  @media (max-width: 370px) {
+    gap: 0;
+  }
 }
 
 .backBtn {
@@ -15,8 +19,28 @@
   background-color: var(--secondary);
   padding: 8px 20px;
   border-radius: 5px;
+
+  @media (max-width: 560px) {
+    font-size: 14px;
+    padding: 7px 12px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-left: 10px;
+  }
 }
 
 .title {
   padding-right: calc(var(--firstColWidth) + var(--margin));
+
+  @media (max-width: 560px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 370px) {
+    font-size: 22px;
+    padding-right: 0;
+  }
 }

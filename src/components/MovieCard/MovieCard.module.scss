@@ -5,11 +5,13 @@
 }
 
 .MovieCard {
+  max-width: 365px;
   box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
   border-radius: var(--radius);
   padding: var(--padding);
   overflow: hidden;
   color: var(--default);
+  padding-top: calc(var(--padding) * 2);
 }
 
 .imgBlock {
@@ -20,7 +22,6 @@
   margin-bottom: var(--padding);
 
   img {
-    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;

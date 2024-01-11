@@ -3,6 +3,10 @@
   grid-template-columns: 150px 1fr;
   gap: calc(var(--margin) / 2) var(--margin);
   align-content: start;
+
+  @media (max-width: 1060px) {
+    margin: 0 auto;
+  }
 }
 
 .label {

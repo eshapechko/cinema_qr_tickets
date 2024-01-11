@@ -1,27 +1,27 @@
-import {useParams} from 'react-router-dom';
-import {Header} from '../../components/Header/Header';
-import {InfoTable} from '../../components/InfoTable/InfoTable';
-import {SeatsSelect} from '../../components/SeatsSelect/SeatsSelect';
-import {clearOrder} from '../../store/orderSlice/orderSlice';
-import {useAppSelector} from '../../utils/hooks.ts/hookSelector';
+import { useParams } from 'react-router-dom';
+import { Header } from '../../components/Header/Header';
+import { InfoTable } from '../../components/InfoTable/InfoTable';
+import { SeatsSelect } from '../../components/SeatsSelect/SeatsSelect';
+import { clearOrder } from '../../store/orderSlice/orderSlice';
+import { useAppSelector } from '../../utils/hooks.ts/hookSelector';
 import style from './SessionPage.module.scss';
 import cn from 'classnames';
-import {useGetSessionByIdQuery} from '../../api/sessionEndpoints';
-import {Title} from '../../components/Title/Title';
-import {useUpdateSeatByIdMutation} from '../../api/orderEndpoints';
-import {OrderData} from '../../types/order';
-import {useEffect, useRef, useState} from 'react';
-import {getOrderInfo, getPriceInfo, getSessionInfo} from './helpers';
-import {useAppDispatch} from '../../utils/hooks.ts/hookDispatch';
+import { useGetSessionByIdQuery } from '../../api/sessionEndpoints';
+import { Title } from '../../components/Title/Title';
+import { useUpdateSeatByIdMutation } from '../../api/orderEndpoints';
+import { OrderData } from '../../types/order';
+import { useEffect, useRef, useState } from 'react';
+import { getOrderInfo, getPriceInfo, getSessionInfo } from './helpers';
+import { useAppDispatch } from '../../utils/hooks.ts/hookDispatch';
 
 export const SessionPage = () => {
   const dispatch = useAppDispatch();
   const imgRef = useRef<HTMLImageElement>(null);
   const [isDisabled, setIsDesabled] = useState(false);
   const [qrCode, setQrCode] = useState('');
-  const {id} = useParams();
-  const {isLoading, data} = useGetSessionByIdQuery(id!);
-  const [buyTicket, {isSuccess}] = useUpdateSeatByIdMutation();
+  const { id } = useParams();
+  const { isLoading, data } = useGetSessionByIdQuery(id!);
+  const [buyTicket, { isSuccess }] = useUpdateSeatByIdMutation();
 
   const order = useAppSelector((state) => state.order);
   const price = 20;
@@ -100,8 +100,7 @@ export const SessionPage = () => {
                   className={cn(style.buyBtn, 'hover', {
                     [style.disable]: isDisabled,
                   })}
-                  onClick={onClick}
-                >
+                  onClick={onClick}>
                   Купить
                 </div>
               )}
@@ -114,7 +113,7 @@ export const SessionPage = () => {
           )}
           {qrCode && (
             <div className={style.qr}>
-              <img ref={imgRef} src='' alt='QR код' />
+              <img className={style.qrImg} ref={imgRef} alt='QR код' />
             </div>
           )}
         </div>

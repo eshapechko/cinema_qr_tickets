@@ -8,6 +8,10 @@
   grid-template-columns: repeat(2, 1fr);
   gap: calc(var(--margin) * 2);
   align-items: start;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .info {
@@ -15,16 +19,29 @@
   gap: calc(var(--margin) * 2);
 }
 
-.title {
-  text-align: center;
-}
-
 .total {
   font-size: 28px;
+
+  @media (max-width: 1000px) {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 560px) {
+    font-size: 16px;
+  }
 
   span {
     font-weight: 300;
     margin-right: calc(var(--margin) / 2);
+  }
+}
+
+.title {
+  @media (max-width: 1000px) {
+    margin: 0 auto;
+  }
+  @media (max-width: 560px) {
+    font-size: 18px;
   }
 }
 
@@ -33,17 +50,42 @@
 }
 
 .buyBtn {
+  margin: 0 auto;
+  max-width: 300px;
   margin-top: var(--margin);
-  padding: 16px 24px;
+  padding: 16px 72px;
   text-align: center;
   font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
   background-color: var(--accent);
   color: var(--light);
+
+  @media (max-width: 560px) {
+    padding: 12px 52px;
+    font-size: 16px;
+  }
 }
 
 .disable {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.qr {
+  @media (max-width: 1000px) {
+    margin: 0 auto;
+  }
+}
+
+.qrImg {
+  @media (max-width: 1000px) {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media (max-width: 380px) {
+    width: 100px;
+    height: 100px;
+  }
 }

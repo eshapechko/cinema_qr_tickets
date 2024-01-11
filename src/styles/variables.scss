@@ -14,5 +14,10 @@
 
   /* Seats Map */
   --seat-gap: 12px;
+
   --seat-size: 28px;
+  @media (max-width: 560px) {
+    --seat-size: 20px;
+    --seat-gap: 8px;
+  }
 }
